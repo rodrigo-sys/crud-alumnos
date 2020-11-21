@@ -1,0 +1,118 @@
+var express = require('express');
+var router = express.Router();
+
+var bd=require('./bd');
+
+//Creación de la tabla
+router.get('/creartabla', function(req, res, next) {
+   bd.query('drop table if exists alumnos',function (error,resultado){
+        if (error) {
+          console.log(error);                
+          return;
+        }
+   });    
+   bd.query('create table alumnos ('+
+                       'codigo int primary key auto_increment,'+
+                       'descripcion varchar(50),'+
+                       'precio float'+
+                    ')', function (error,resultado){
+        if (error) {            
+          console.log(error);                
+          return;
+        }  
+  });    
+  res.render('mensajealumnos',{mensaje:'La tabla se creo correctamente.'});  
+});
+
+
+//Alta de registros
+router.get('/alta', function(req, res, next) {
+  res.render('altaalumnos');
+});
+
+
+router.post('/alta', function(req, res, next) {
+      var registro={
+          descripcion:req.body.descripcion,
+          precio:req.body.precio
+        };
+      bd.query('insert into alumnos set ?',registro, function (error,resultado){
+          if (error){
+              console.log(error);
+              return;
+          }
+      });    
+  res.render('mensajealumnos',{mensaje:'La carga se efectuo correctamente'});
+});
+
+
+//Listado de registros
+router.get('/listado', function(req, res, next) {
+  bd.query('select codigo,descripcion,precio from alumnos', function(error,filas){
+        if (error) {            
+            console.log('error en el listado');
+            return;
+        }    
+        res.render('listaralumnos',{alumnos:filas});
+  });
+});
+
+
+//Consulta
+router.get('/consulta', function(req, res, next) {
+  res.render('consultaalumnos');
+});
+
+
+router.post('/consulta', function(req, res, next) {
+  bd.query('select descripcion,precio from alumnos where codigo=?',req.body.codigo, function(error,filas){
+            if (error) {            
+                console.log('error en la consulta');
+                return;
+            }
+            if (filas.length>0) {
+                res.render('listadoconsulta',{alumnos:filas});
+            } else {
+                res.render('mensajealumnos',{mensaje:'No existe el codigo de articulo ingresado'});
+            }    
+        });
+});
+
+
+//Modificacion
+router.get('/modificacion', function(req, res, next) {
+  res.render('consultamodificacion');
+});
+
+
+router.post('/modificar', function(req, res, next) {
+  bd.query('select descripcion,precio,codigo from alumnos where codigo=?',req.body.codigo, function(error,filas){
+            if (error) {            
+                console.log('error en la consulta');
+                return;
+            }
+            if (filas.length>0) {
+                res.render('formulariomodifica',{alumnos:filas});
+            } else {
+                res.render('mensajealumnos',{mensaje:'No existe el codigo de articulo ingresado'});
+            }    
+        });
+});
+
+
+router.post('/confirmarmodifica', function(req, res, next) {
+  var registro={
+          descripcion:req.body.descripcion,
+          precio:req.body.precio
+      };    
+  bd.query('UPDATE alumnos SET ? WHERE ?',[registro,{codigo:req.body.codigo}], function(error,filas){
+            if (error) {            
+                console.log('error en la consulta');
+                console.log(error);
+                return;
+            }
+            res.render('mensajealumnos',{mensaje:'El articulo fue modificado'});
+        });
+});
+
+module.exports = router;

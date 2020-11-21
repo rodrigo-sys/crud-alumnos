@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>INDEX</title>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+
+    h1 {
+      text-align: center;
+      margin: 20%;
+      border: 1px solid black;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-light">
+
+  <ul class="navbar-nav">
+
+    <!-- ABM -->
+
+    <li class="nav-item">
+      <a href="/" class="nav-link disabled">INICIO</a>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        ABM
+      </a>
+
+      <div class="dropdown-menu">
+
+        <a class="dropdown-item" href="/alumnos/alta">Alta</a>
+        <a class="dropdown-item" href="/alumnos/baja">Baja</a>
+        <a class="dropdown-item" href="/alumnos/modificacion">Modificación</a>
+        <div class="dropdown-item"></div>
+        <a class="dropdown-item" href="/alumnos/listado">Listado</a>
+
+      </div>
+    </li>
+
+    <!-- CONSULTAS -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        CONSULTAS ALUMNOS
+      </a>
+      <div class="dropdown-menu">
+
+        <a class="dropdown-item" href="/alumnos/residentes_batan">Residentes de Batán</a>
+        <a class="dropdown-item" href="/alumnos/residentes_batan_rh_negativo">Residentes de Batán con grupo sanguineo RH-</a>
+        <a class="dropdown-item" href="/alumnos/nacidos_2002">Nacidos en 2002</a>
+        <a class="dropdown-item" href="/alumnos/ordenados_dni_ascendente">Ordenados por D.N.I. ascendente</a>
+        <a class="dropdown-item" href="/alumnos/domicilio_av_jb_justo">Con domicilio Av. J.B. Justo</a>
+
+      </div>
+    </li>
+
+  </ul>
+
+</nav>
+
+<h1>TP. FINAL <br> DESARROLLO SITIOS WEB DINÁMICOS</h1>
+
+</body>
+</html>

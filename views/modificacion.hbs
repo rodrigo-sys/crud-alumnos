@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>modificacion</title>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-light">
+
+  <ul class="navbar-nav">
+
+    <!-- ABM -->
+
+    <li class="nav-item">
+      <a href="/" class="nav-link">INICIO</a>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        ABM
+      </a>
+
+      <div class="dropdown-menu">
+
+        <a class="dropdown-item" href="/alumnos/alta">Alta</a>
+        <a class="dropdown-item" href="/alumnos/baja">Baja</a>
+        <a class="dropdown-item disabled" href="/alumnos/modificacion">Modificación</a>
+        <div class="dropdown-item"></div>
+        <a class="dropdown-item" href="/alumnos/listado">Listado</a>
+
+      </div>
+    </li>
+
+    <!-- CONSULTAS -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+        CONSULTAS ALUMNOS
+      </a>
+      <div class="dropdown-menu">
+
+        <a class="dropdown-item" href="/alumnos/residentes_batan">Residentes de Batán</a>
+        <a class="dropdown-item" href="/alumnos/residentes_batan_rh_negativo">Residentes de Batán con grupo sanguineo RH-</a>
+        <a class="dropdown-item" href="/alumnos/nacidos_2002">Nacidos en 2002</a>
+        <a class="dropdown-item" href="/alumnos/ordenados_dni_ascendente">Ordenados por D.N.I. ascendente</a>
+        <a class="dropdown-item" href="/alumnos/domicilio_av_jb_justo">Con domicilio Av. J.B. Justo</a>
+
+      </div>
+    </li>
+
+  </ul>
+
+</nav>
+
+<div class="container">
+
+  <h1 class="text-center m-4">MODIFICAR REGISTRO ALUMNO</h1>
+
+  <form action="/alumnos/modificacion" method="POST" class="border p-3 m-3">
+    <div class="form-group">
+      Número legajo <input type="number" class="form-control" name="numero_legajo">
+    </div>
+    <button type="submit" class="btn btn-primary">Modificar</button>
+  </form>
+</div>
+
+</body>
+</html>
