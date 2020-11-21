@@ -8,6 +8,7 @@ var conexion = mysql.createConnection({
     // database:'escuela',
 
     host:'remotemysql.com',
+    port:3306,
     user:'Vyx1otPXam',
     password:'Wu0dXe7KEc',
 
